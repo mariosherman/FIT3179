@@ -3,6 +3,20 @@
   "data": {
     "url": "https://raw.githubusercontent.com/mariosherman/FIT3179/refs/heads/main/data/cars_2024.csv"
   },
+  "params": [
+    {
+      "name": "FuelTypeFilter",
+      "bind": {
+        "input": "select",
+        "options": [null, "petrol", "diesel", "electric"],
+        "labels": ["All", "Petrol", "Diesel", "Electric"],
+        "name": "Fuel Type: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "FuelTypeFilter == null || datum.fuel == FuelTypeFilter"}
+  ],
   "mark": "bar",
   "encoding": {
     "x": {
@@ -26,7 +40,8 @@
     },
     "tooltip": [
       { "field": "maker", "type": "nominal", "title": "Maker" },
-      { "aggregate": "count", "field": "maker", "type": "quantitative", "title": "Number of Cars", "format": ",.0f" }
+      { "aggregate": "count", "field": "maker", "type": "quantitative", "title": "Number of Cars", "format": ",.0f" },
+      { "field": "fuel", "type": "nominal", "title": "Fuel Type" }
     ]
   },
   "width": 800,
