@@ -1,17 +1,34 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": { "url": "https://raw.githubusercontent.com/mariosherman/FIT3179/refs/heads/main/data/cars_2024.csv" },
-    "transform": [{"filter": "datum.fuel != null"}], 
-    "mark": "bar",
-    "encoding": {
-      "x": { "field": "maker", "type": "nominal", "title": "Maker" },
-      "y": { "aggregate": "count", "field": "maker", "type": "quantitative", "title": "Number of Cars" },
-      "tooltip": [
-        { "field": "maker", "type": "nominal", "title": "Maker" },
-        { "aggregate": "count", "field": "maker", "type": "quantitative", "title": "Number of Cars" }
-      ]
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/mariosherman/FIT3179/refs/heads/main/data/cars_2024.csv"
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "maker",
+      "type": "nominal",
+      "title": "Maker",
+      "axis": {
+        "labelAngle": -45
+      }
     },
-    "width": 400,
-    "height": 300
+    "y": {
+      "aggregate": "count",
+      "field": "maker",
+      "type": "quantitative",
+      "title": "Number of Cars",
+      "axis": {
+        "format": ",.0f",  
+        "formatType": "number",
+        "labelExpr": "replace(datum.label, ',', '.')"
+      }
+    },
+    "tooltip": [
+      { "field": "maker", "type": "nominal", "title": "Maker" },
+      { "aggregate": "count", "field": "maker", "type": "quantitative", "title": "Number of Cars", "format": ",.0f" }
+    ]
+  },
+  "width": 800,
+  "height": 600
 }
-  
