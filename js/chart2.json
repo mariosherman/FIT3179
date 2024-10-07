@@ -1,0 +1,19 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": { "url": "/workspaces/FIT3179/data/cars_2024.csv" },
+    "transform": [{"filter": "datum.fuel != null"}], 
+    "mark": "bar",
+    "encoding": {
+      "x": { "field": "model", "type": "nominal", "title": "Model" },
+      "y": { "aggregate": "count", "field": "model", "type": "quantitative", "title": "Number of Cars" },
+      "color": { "field": "fuel", "type": "nominal", "title": "Fuel Type" },
+      "tooltip": [
+        { "field": "model", "type": "nominal", "title": "Model" },
+        { "field": "fuel", "type": "nominal", "title": "Fuel Type" },
+        { "aggregate": "count", "field": "model", "type": "quantitative", "title": "Number of Cars" }
+      ]
+    },
+    "width": 400,
+    "height": 300
+}
+  
