@@ -1,19 +1,38 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": { "url": "https://raw.githubusercontent.com/mariosherman/FIT3179/refs/heads/main/data/cars_2024.csv" },
-    "transform": [{"filter": "datum.fuel != null"}], 
-    "mark": "bar",
+    "data": {
+      "url": "https://raw.githubusercontent.com/mariosherman/FIT3179/refs/heads/main/data/cars_2024.csv"
+    },
+    "mark": "line",
     "encoding": {
-      "x": { "field": "model", "type": "nominal", "title": "Model" },
-      "y": { "aggregate": "count", "field": "model", "type": "quantitative", "title": "Number of Cars" },
-      "color": { "field": "fuel", "type": "nominal", "title": "Fuel Type" },
+      "x": {
+        "timeUnit": "month",  
+        "field": "date_reg",
+        "type": "temporal",
+        "title": "Year"
+      },
+      "y": {
+        "aggregate": "count",
+        "type": "quantitative",
+        "title": "Number of Cars"
+      },
+      "color": {
+        "field": "fuel",
+        "type": "nominal",
+        "title": "Fuel Type"
+      },
       "tooltip": [
-        { "field": "model", "type": "nominal", "title": "Model" },
-        { "field": "fuel", "type": "nominal", "title": "Fuel Type" },
-        { "aggregate": "count", "field": "model", "type": "quantitative", "title": "Number of Cars" }
+        { "timeUnit": "year", "field": "date_reg", "type": "temporal", "title": "Year: " },
+        { "field": "fuel", "type": "nominal", "title": "Fuel Type: " },
+        { 
+          "aggregate": "count", 
+          "type": "quantitative", 
+          "title": "Number of Cars: ", 
+          "format": ",.0f"  
+        }
       ]
     },
-    "width": 400,
-    "height": 300
-}
+    "width": 800,
+    "height": 600
+  }
   
