@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": { "url": "/workspaces/FIT3179/data/cars_2024.csv" },
+    "data": { "url": "https://raw.githubusercontent.com/mariosherman/FIT3179/refs/heads/main/data/cars_2024.csv" },
     "transform": [{"filter": "datum.fuel != null"}], 
     "mark": "bar",
     "encoding": {
